@@ -1,0 +1,73 @@
+<div class="container" id="updateUser">
+
+	<span class="error"><?= $errorMessage ?></span>
+
+	<form action="#" method="POST">
+				
+		<fieldset>
+			<legend>Votre identité</legend>
+			
+			<div class="flex">
+				<label for="firstName">Prénom :</label>
+				<input type="text" name="firstName" placeholder="Prénom" value="<?= $user["UserFirstname"] ?>" required />
+			</div>
+
+			<div class="flex">
+				<label for="lastName">Nom :</label>
+				<input type="text" name="lastName" placeholder="Nom" value="<?= $user["UserLastname"] ?>" required />
+			</div>
+			
+			<div class="flex">
+
+				<label for="day">Date de naissance :</label>
+
+				<div>
+					<input class="day" type="number" name="day" min="1" max="31" value="<?= $user["day"] ?>" />/
+					<input class="month" type="number" name="month" min="1" max="12" value="<?= $user["month"] ?>" />/
+					<input class="year" type="number" name="year" value="<?= $user["year"] ?>" />
+				</div>
+			</div>
+		</fieldset>
+		
+		
+		<fieldset>
+
+			<legend>Vos coordonnées</legend>
+
+			<div>
+				<div class="flex">
+					<label for="address">Adresse :</label> 
+					<input type="text" name="address" placeholder="Adresse" value="<?= $user["UserAddress"] ?>" required />
+				</div>
+				
+				<div class="flex">
+					<label for="zipcode">Code postal :</label> 
+					<input type="text" name="zipcode" placeholder="Code Postal" value="<?= $user["UserZipcode"] ?>" required >
+				</div>
+				
+				<div class="flex">
+					<label for="city">Ville : </label>
+					<input type="text" name="city" placeholder="Ville" value="<?= $user["UserCity"] ?>" required />
+				</div>
+				
+				<div class="flex">
+					<label for="country">Pays :</label>
+					<input type="text" name="country" placeholder="Pays" value="<?= $user["UserCountry"] ?>" required />
+				</div>
+				
+				<div class="flex">
+					<label for="phone">Téléphone : </label>
+					<input type="text" name="phone" placeholder="Téléphone" value="<?= $user["UserPhone"] ?>" required />
+				</div>
+			</div>
+		</fieldset>
+		
+		<!--bouton formulaire-->
+		<div>
+			<button class="button" type= "submit"> Envoyer </button>
+			<a href="<?= $requestUrl ?>/account" title="Retour" class="button">Annuler</a>
+		</div>
+		
+	</form>
+
+</div>

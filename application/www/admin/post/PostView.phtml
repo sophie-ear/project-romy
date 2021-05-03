@@ -1,0 +1,60 @@
+<div class="container" id="post">
+
+	<div>
+		<a href="<?= $requestUrl ?>" title="Accueil" class="button">Accueil</a>
+		<a href="<?= $requestUrl ?>/admin" title="Retour" class="button">Retour</a>
+	</div>
+
+	<h2>Liste des articles en vente</h2>
+
+	<span class="error"><?= $FlashBag->fetchMessage(); ?></span>
+
+	<table>
+		<thead>
+			<th class="mobile"></th>
+			<th>Nom</th>
+			<th class="mobile">Description</th>
+			<th>Prix</th>
+			<th>Stock</th>
+			<th></th>
+			<th></th>
+		</thead>
+
+		<tbody>
+
+			<?php foreach($products as $product): ?>
+
+			<tr>
+				<td class="mobile">
+					<img src="<?= $wwwUrl ?>/images/shop/<?= $product['ProductImage'] ?>" alt="<?= $product['ProductImage'] ?>" />
+				</td>
+
+				<td><?= $product['ProductName'] ?></td>
+
+				<td class="mobile"><?= $product['ProductDescription'] ?></td>
+
+				<td><?= $product['ProductPrice'] ?> €</td>
+				
+				<td><?= $product['ProductQty'] ?></td>
+
+				<td>
+					<a href="<?= $requestUrl ?>/admin/post/edit?ProductID=<?= $product['ProductID'] ?>" class="icone"><i class="fas fa-pencil-alt"></i></a>
+				</td>
+				
+				<form action="<?= $requestUrl ?>/admin/post" method="POST">
+					<td>
+						<input type="hidden" name ="product" value="<?= $product['ProductID'] ?>">
+						<button type="submit" name="button" value="deleteItem" class="icone"><i class="fas fa-trash-alt"></i></button>
+					</td>
+				</form>
+			</tr>
+
+			<?php endforeach; ?>
+
+		</tbody>
+	</table>
+
+	<div>
+		<a href="<?= $requestUrl ?>/admin" title="Retour" class="button">Retour</a>
+	</div>
+</div>

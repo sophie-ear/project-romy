@@ -1,0 +1,69 @@
+<div id="listUsers" class="container">
+
+	<h2>Liste des utilisateurs du site</h2>
+
+	<div>
+		<a href="<?= $requestUrl ?>/admin" title="Retour" class="button">Retour</a>
+	</div>
+
+	<span class="error"><?= $FlashBag->fetchMessage(); ?></span>
+
+	<table>
+		<thead>
+			<th class="mobile">Date d'inscription</th>
+			<th>Nom</th>
+			<th>Prénom</th>
+			<th class="mobile">Date de naissance</th>
+			<th class="mobile">Adresse</th>
+			<th>Contact</th>
+			<th>Statut</th>
+		</thead>
+		
+		<tbody>
+			<?php foreach($users as $user): ?>
+				<tr>
+					<td class="mobile"><?= $user["AccountDate"] ?></td>
+					<td><?= $user["UserLastname"] ?></td>
+					<td><?= $user["UserFirstname"] ?></td>
+					<td class="mobile"><?= $user["UserBirth"] ?></td>
+					<td class="mobile">
+						<?= $user["UserAddress"] ?>
+						<?= $user["UserZipcode"]." ".$user["UserCountry"] ?>
+					</td>
+					<td class="flex">
+						<?= $user["UserPhone"] ?>
+						<a href="mailto:<?= $user["UserMail"] ?>" title="mail"><?= $user["UserMail"] ?></a>
+					</td>
+					<td>
+						<form action="<?= $requestUrl ?>/admin" method="POST">
+							<input type="hidden" name="UserID" value="<?= $user["UserID"] ?>" class="flex"/>
+
+							<select name="userStatus">
+
+								<?php foreach($status as $now): ?>
+									<?php if($now["UserStatus"] == $user["UserStatus"]): ?>
+										<option selected value="<?= $user["UserStatus"] ?>"><?= $user["StatusName"] ?></option>
+									
+									<?php else: ?>
+										<option value="<?= $now["UserStatus"] ?>"><?= $now["StatusName"] ?></option>
+
+									<?php endif; ?>
+								<?php endforeach; ?>
+							</select>
+
+							<button type="submit" name="button" value="editUserStatus" class="icone"><i class="fas fa-check"></i></button>
+
+							<a href="<?= $requestUrl ?>/admin/listusers/modify?ID=<?= $user["UserID"] ?>" title="Modifier cet utilisateur" class="icone"><i class="fas fa-pencil-alt"></i></a>
+
+							<button type="submit" name="button" value="deleteUser" class="icone"><i class="fas fa-trash-alt"></i></button>
+						</form>
+					</td>
+				</tr>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+
+	<div>
+		<a href="<?= $requestUrl ?>/admin" title="Retour" class="button">Retour</a>
+	</div>
+</div>

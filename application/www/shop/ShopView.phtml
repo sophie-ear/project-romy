@@ -1,0 +1,68 @@
+<div class="container" id="shop">
+
+	<h2>Shop</h2>
+
+	<span class="error"><?= $FlashBag->fetchMessage(); ?></span>
+
+	<?php if($session->isLogged() == false): ?>
+			<p>Veuillez vous connecter pour ajouter des articles au panier.</p>
+	<?php endif; ?>
+
+	<div class="flex">
+
+		<?php foreach($products as $product): ?>
+		
+			<article>
+				<h3><b><?= $product['ProductName'] ?></b></h3>
+
+				<ul class="flex">
+					<li>
+						<img src="<?= $wwwUrl ?>/images/shop/<?= $product['ProductImage'] ?>" alt="Image de <?= $product['ProductName'] ?>" />
+					</li>
+
+					<ul>
+						<li>
+							<ul class="flex">
+								<li><?= $product['ProductDescription'] ?></li>
+								<li><?= $product['ProductPrice'] ?> €</li>
+							</ul>
+						</li>
+						
+						<?php if($session->isLogged() == true): ?>
+						<li>
+							<form action="<?= $requestUrl ?>/basket" method="POST">
+								<input name="ProductID" type="hidden" value="<?= $product['ProductID'] ?>" />
+
+								<ul class="flex" id="<?= $product['ProductID'] ?>">
+
+									<?php if($product['ProductQty']>0): ?>
+										<li class="nowrap">
+											<input type="number" name="ProductQty" min="1" max="<?= $product['ProductQty'] ?>" value="1" />
+											
+											<button type="submit" name="button" value="addBasket" class="icone"><i class="fas fa-check-circle"></i></button>
+										</li>
+									<?php endif; ?>
+
+									<?php 
+									//il faut faire un isset de $basket qty du produit
+									if($product['ProductQty'] <= 0): ?>
+										<li>Ce produit n'est plus en stock.</li>
+									<?php endif; ?>
+									
+								</ul>
+							</form>
+						</li>
+					</ul>
+					<?php endif; ?>
+				</ul>
+
+				<!--<a href="product.html" id="product.html?id=1" class="bouton">Voir ce produit</a>-->
+			</article>
+		
+
+		<?php endforeach; ?>
+	
+		
+	</div>
+
+</div>

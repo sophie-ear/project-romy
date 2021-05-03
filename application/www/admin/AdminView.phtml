@@ -1,0 +1,65 @@
+<div id="admin" class="container">
+	
+	<h2>Panneau de gestion</h2>
+
+	<div class="flex">
+		<a href="<?= $requestUrl ?>/admin/post" title="Liste des articles" class="button">Liste des articles</a>
+		
+		<a href="<?= $requestUrl ?>/admin/newpost" title="Nouvel article" class="button">Nouvel article</a>
+
+		<a href="<?= $requestUrl ?>/admin/listusers" title="Liste des utilisateurs" class="button">Liste utilisateurs</a>
+	</div>
+
+
+	<h2>Liste des commandes</h2>
+
+	<span class="error"><?= $FlashBag->fetchMessage(); ?></span>
+
+	<table>
+		<thead>
+			<th>Commande #</th>
+			<th class="mobile">Client</th>
+			<th>Date</th>
+			<th class="mobile">Prix HT</th>
+			<th class="mobile">Prix TTC</th>
+			<th>Statut</th>
+		</thead>
+
+		<tbody>
+			<?php foreach($orders as $order): ?>
+			<tr>
+				<td><a href="<?= $requestUrl ?>/details?UserID=<?= $order["UserID"] ?>&OrderID=<?= $order["OrderID"] ?>" title="Détails"><?= $order["OrderID"] ?></a></td>
+				<td class="mobile"><?= $order["UserFirstname"]." ".$order["UserLastname"] ?></td>
+				<td><?= $order["OrderDate"] ?></td>
+				<td class="mobile"><?= $order["OrderHT"] ?></td>
+				<td class="mobile"><?= $order["OrderTTC"] ?></td>
+				<td>
+					<form action="<?= $requestUrl ?>/admin" method="POST">
+						<input type="hidden" name="OrderID" value="<?= $order["OrderID"] ?>" />
+
+						<select name="status">
+
+							<?php foreach($status as $now): ?>
+
+								<?php if($now["OrderStatus"] == $order["OrderStatus"]): ?>
+
+									<option selected value="<?= $order["OrderStatus"] ?>"><?= $order["StatusName"] ?></option>
+
+								<?php else: ?>
+
+									<option value="<?= $now["OrderStatus"] ?>"><?= $now["StatusName"] ?></option>
+
+								<?php endif; ?>
+							<?php endforeach; ?>
+						</select>
+
+						<button type="submit" name="button" value="editOrderStatus" class="icone"><i class="fas fa-check"></i></button>
+
+					</form>
+				</td>
+			</tr>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+
+</div>

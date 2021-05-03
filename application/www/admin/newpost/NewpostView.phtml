@@ -1,0 +1,47 @@
+<div class="container" id="newPost">
+
+	<span class="error"><?= $errorMessage ?></span>
+
+	<form action="<?= $requestUrl ?>/admin/newpost" method="POST" enctype="multipart/form-data">
+	
+		<fieldset>
+
+			<legend>NEW</legend>
+
+			<div class="flex">
+				<label for="ProductName">Nom de l'article</label>
+				<input type="textarea" name="ProductName" value="<?= $ProductName ?>" required />
+			</div>
+			
+			<div class="flex">
+				<label for="content">Description</label>
+				<textarea name="ProductDescription"><?= $ProductDescription ?></textarea>
+			</div>
+
+			<div class="flex">
+				<label for="ProductPrice">Prix (sans €)</label>
+				<input type="text" name="ProductPrice" value="<?= $ProductPrice ?>" required />
+			</div class="flex">
+
+			<div class="flex">
+				<label for="quantity">Quantité en stock</label>
+				<input type="text" name="quantity" value="<?= $quantity ?>" required />
+			</div>
+
+			<div id="uploadImage">
+
+				<!-- Upload d'un fichier de 2000000 octets maximum -->
+				<input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
+				<p><input name="userfile" type="file" /> (2 Mb maximum)</p>
+				<p>(Merci de bien nommer votre fichier pour qu'il soit clair.)</p>	
+			</div>
+		</fieldset>
+		
+		<div class="centerButton">
+			<button type="submit" name="button" class="button">Enregistrer</button>
+			<a href="<?= $requestUrl ?>/admin" title="Retour" class="button">Annuler</a>
+		</div>
+	</form>
+
+	
+</div>

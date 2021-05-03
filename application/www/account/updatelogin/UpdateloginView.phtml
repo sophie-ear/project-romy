@@ -1,0 +1,42 @@
+<div class="container" id="updateLogin">
+
+	<span class="error"><?= $errorMessage ?></span>
+
+	<form action="#" method="POST">
+		<fieldset>
+			<legend>Informations de connexion</legend>
+
+			<div>
+				<div class="flex">
+					<label for="email">Email :</label>
+					<input type="email" name="email" placeholder="Nouvel email" value="<?= ($user["UserMail"]) ?>" required />
+				</div>
+				
+				<div class="flex">
+					<label for="oldPassword">Ancien mot de passe :</label>
+					<input type="password" name="oldPassword" value="" required />
+				</div>
+
+				<div class="flex">
+					<label for="newPassword">Nouveau mot de passe :</label>
+					<input type="password" name="newPassword" value="" required />
+				</div>
+
+				<div class="flex">
+					<label for="confirmPassword">Confirmez le mot de passe :</label>
+					<input type="password" name="confirmPassword" value="" required />
+				</div>
+
+			</div>
+
+		</fieldset>
+		
+		<!--bouton formulaire-->
+		<div>
+			<button class="button" type= "submit"> Envoyer </button>
+			<a href="<?= $requestUrl ?>/account" title="Retour" class="button">Annuler</a>
+		</div>
+		
+	</form>
+
+</div>

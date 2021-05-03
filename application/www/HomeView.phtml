@@ -1,0 +1,34 @@
+<div class="container" id="homeview">
+	<h2>
+		<?php 
+			if($session->isLogged() == true){
+				echo "Hello ".$session->getName();
+			}
+		?>
+	</h2>
+	
+	<span class="error"><?= $FlashBag->fetchMessage(); ?></span>
+
+
+
+	<div class="slider">
+		<span class="control_next"><i class="fas fa-angle-right"></i></span>
+		<span class="control_prev"><i class="fas fa-angle-left"></i></span>
+		<ul>
+			<li><img src="<?= $wwwUrl ?>/images/slides/happy-holidays.jpg" alt="Happy Holidays" /></li>
+			<li><img src="<?= $wwwUrl ?>/images/slides/sunset.jpg" alt="Couché de soleil" /></li>
+			<li><img src="<?= $wwwUrl ?>/images/slides/painting.jpg" alt="Peinture" /></li>
+			<li><img src="<?= $wwwUrl ?>/images/slides/pens.jpg" alt="Matériels" /></li>
+		</ul>  
+	</div>
+
+	<article>
+		<h2>Bienvenue sur mon e-shop !</h2>
+	
+		<p>
+			Ici vous retrouverez principalement des tote bags brodés de ma création. Mais aussi des travaux que j'ai eu le plaisir de réaliser, que ce soient des flash sur des planches de surfs, des décors muraux, vitrines de restaurant ou de la décoration d'intérieur ! Vous pouvez aussi commander des dessins customisés en me contactant directement par mail ou sur Instagram, plus d'informations <i class="fas fa-long-arrow-alt-right"></i> <a href="<?= $requestUrl ?>/contact" title="Contact"><i class="fas fa-heart"></i></a>
+		</p>
+		
+	</article>
+	
+</div>

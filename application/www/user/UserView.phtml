@@ -1,0 +1,119 @@
+<div class="container">
+	<h2>Nouveau compte</h2>
+
+	<span class="error"><?= $errorMessage ?></span>
+
+	<form action="#" method="POST">
+				
+		<fieldset>
+			<legend>Votre identité</legend>
+			
+			<div>
+				<div class="flex">
+					<label for="firstName">Prénom :</label>
+					<input type="text" name="firstName" placeholder="Prénom" value="<?= $firstName  ?>" required />
+				</div>
+
+				<div class="flex">
+					<label for="lastName">Nom :</label>
+					<input type="text" name="lastName" placeholder="Nom" value="<?= $lastName ?>" required />
+				</div>
+				
+				<div>
+					<label for="day">Date de naissance : </label>
+
+					<div class="flex date">
+						<select name="day" class="day">
+							<?php
+								for($day=1; $day<=31; $day++){
+									echo "<option value =$day>$day</option>";
+								}
+							?>
+						</select>
+						<span> / </span>
+						<select name="month" class="month">
+							<?php
+								echo "<option value='01'>Janvier</option>";
+								echo "<option value='02'>Février</option>";
+								echo "<option value='03'>Mars</option>";
+								echo "<option value='04'>Avril</option>";
+								echo "<option value='05'>Mai</option>";
+								echo "<option value='06'>Juin</option>";
+								echo "<option value='07'>Juillet</option>";
+								echo "<option value='08'>Août</option>";
+								echo "<option value='09'>Septembre</option>";
+								echo "<option value='10'>Octobre</option>";
+								echo "<option value='11'>Novembre</option>";
+								echo "<option value='12'>Décembre</option>";
+							?>
+						</select>
+						<span> / </span>
+						<select name="year" class="year">
+							<?php
+								for($year=(date("Y")-15); $year>=1900; $year--){
+									echo "<option value =$year>$year</option>";
+								}
+							?>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+		</fieldset>
+		
+		
+		<fieldset>
+			<legend>Vos coordonnées</legend>
+			<div>
+				<div class="flex">
+				<label for="address">Adresse :</label>
+					<input type="text" name="address" placeholder="Adresse" value="<?= $address ?>" required />
+				</div>
+				
+				<div class="flex">
+				<label for="zipcode">Code Postal :</label>
+					<input type="number" name="zipcode" placeholder="Code Postal" value="<?= $zipcode ?>" required />
+				</div>
+				
+				<div class="flex">
+				<label for="city">Ville :</label>
+					<input type="text" name="city" placeholder="Ville" value="<?= $city ?>" required />
+				</div>
+				
+				<div class="flex">
+				<label for="country">Pays :</label>
+					<input type="text" name="country" placeholder="Pays" value="<?= $country ?>" required />
+				</div>
+				
+				<div class="flex">
+				<label for="phone">Phone :</label>
+					<input type="text" name="phone" placeholder="Téléphone" value="<?= $phone ?>" required />
+				</div>
+			</div>
+		</fieldset>
+		
+		
+		<fieldset>
+			<legend>Informations de connexion</legend>
+			<div>
+				<div class="flex">
+					<label for="email">Email :</label>
+					<input type="email" name="email" placeholder="Email" value="<?= $email  ?>" required />
+				</div>
+				
+				<div class="flex">
+					<label for="password">Mot de passe :</label>
+					<input type="password" id="password" name="password" placeholder="Mot de passe" value="" required />
+				</div> 
+			</div>
+		</fieldset>
+		
+		<!--bouton formulaire-->
+		<div>
+			<button class="button" type= "submit"> Envoyer </button>
+			<button class="button" type="reset"> Annuler </button>
+		</div>
+		
+	</form>
+
+</div>

@@ -1,0 +1,48 @@
+<div class="container" id="edit">
+
+	<span class="error"><?= $errorMessage ?></span>
+
+	<form action="#" method="POST" enctype="multipart/form-data">
+		<fieldset>
+
+			<legend>EDIT <?= $product["ProductName"] ?></legend>
+			
+			<div class="flex">
+				<label for="ProductName">Nom du Produit</label>
+				<input type="text" name="ProductName" value="<?= $product["ProductName"] ?>">
+			</div>
+
+			<div class="flex">
+				<label for="ProductDescription">Description</label>
+				<textarea name="ProductDescription"><?= $product["ProductDescription"] ?></textarea>
+			</div class="flex">
+
+			<div class="flex">
+				<label for="ProductPrice">Prix (sans €)</label>
+				<input type="text" name="ProductPrice" value="<?= $product["ProductPrice"] ?>">
+			</div>
+
+			<div class="flex">
+				<label for="quantity">Quantité en stock</label>
+				<input type="text" name="quantity" value="<?= $product["ProductQty"] ?>">
+			</div>
+
+			<div id="updateImage">
+				<!-- Upload d'un fichier de 2000000 octets maximum -->
+				<input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
+				<p><input name="userfile" type="file" /> (2 Mb maximum)</p>
+				<p>(Merci de bien nommer votre fichier pour qu'il soit clair.)</p>
+			</div>
+
+			
+		</fieldset>
+
+		<div class="centerButton">
+			<input type="hidden" name="product" value="<?= $product["ProductID"] ?>" />
+			<button type="submit" name="button" value="updateItem" class="button">Enregistrer <i class="fas fa-check"></i></button>
+			<a href="<?= $requestUrl ?>/admin/post" title="Retour" class="button">Annuler <i class="fas fa-times"></i></a>
+		</div>
+	</form>
+
+	
+</div>

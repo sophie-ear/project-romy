@@ -1,0 +1,64 @@
+<div class="container" id="account">
+
+	<span class="error"><?= $FlashBag->fetchMessage(); ?></span>
+	
+	<h2>Mon compte</h2>
+
+	<div>
+		<h3>Mes informations</h3>
+
+		<ul>
+			<li><b>Prénom :</b> <?= $info["UserFirstname"] ?></li>
+			<li><b>Nom :</b> <?= $info["UserLastname"] ?></li>
+			<li><b>Date de naissance :</b> <?= $info["day"]."/".$info["month"]."/".$info["year"] ?></li>
+			<li><b>Adresse : </b>
+				<ul>
+					<li><?= $info["UserAddress"] ?></li>
+					<li><?= $info["UserZipcode"]." ".$info["UserCity"] ?></li>
+					<li><?= $info["UserCountry"] ?></li>
+				</ul>
+			</li>
+			<li><b>Téléphone :</b> <?= $info["UserPhone"] ?></li>
+			<li><b>Mail :</b> <?= $info["UserMail"] ?></li>
+			<li></li>
+		</ul>
+
+		<div class="centerButton">
+			<a href="<?= $requestUrl ?>" title="Accueil" class="button"><i class="fas fa-home"></i> Accueil</a>
+
+			<a href="<?= $requestUrl ?>/account/updateuser" title="Modifier info" class="button"><i class="fas fa-pencil-alt"></i> infos</a>
+
+			<a href="<?= $requestUrl ?>/account/updatelogin" title="Modifier login" class="button"><i class="fas fa-pencil-alt"></i> email et/ou MDP</a>
+		</div>
+	</div>
+	
+
+	<div>
+		<h3>Mes commandes</h3>
+
+		<table>
+			<thead>
+				<th><span class="mobile">Commande</span> #</th>
+				<th>Date</th>
+				<th>Prix HT</th>
+				<th>Prix TTC</th>
+				<th>Statut</th>
+			</thead>
+
+			<tbody>
+				<?php foreach($orders as $order): ?>
+					<tr>
+						<td>
+							<a href="<?= $requestUrl ?>/details?UserID=<?= $info["UserID"] ?>&OrderID=<?= $order["OrderID"] ?>" title="Détails">   <?= $order["OrderID"] ?>   </a>
+						</td>
+						<td class="nowrap"><?= $order["OrderDate"] ?></td>
+						<td><?= $order["OrderHT"] ?> €</td>
+						<td><?= $order["OrderTTC"] ?> €</td>
+						<td><?= $order["StatusName"] ?></td>
+					</tr>
+					
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+	</div>
+</div>

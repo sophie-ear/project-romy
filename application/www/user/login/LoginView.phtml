@@ -1,0 +1,31 @@
+<div class="container">
+
+	<span class="error"><?= $errorMessage ?></span>
+
+	<form action="#" method="POST">
+
+		<fieldset>
+			<legend><i class="fas fa-lock"></i> Informations de connexion</legend>
+
+			<div>
+				<div class="flex">
+					<label><i class="fas fa-at"></i> Addresse e-mail : </label>
+					<input type="email" name="email" value="" required />
+				</div>
+
+				<div class="flex">
+					<label><i class="fas fa-lock"></i> Mot de passe : </label>
+					<input type="password" name="password" value="" required />
+				</div>
+			</div>
+		</fieldset>
+
+
+		<!--bouton formulaire-->
+		<div>
+			<button class="button" type="submit"> Connexion </button>
+			<button class="button" type="reset"> Annuler </button>
+		</div>
+
+	</form>
+</div>
